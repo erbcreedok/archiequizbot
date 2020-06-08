@@ -8,6 +8,9 @@
     "start": "node index.js"
   },
   "keywords": [],
+  "engines": {
+    "node": "10.x"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
