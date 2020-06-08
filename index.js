@@ -12,10 +12,12 @@ var app = express();
 
 var users = {}
 var white_list = ['archiebatman', 'yerbols', 'whereisaiman']
+var subscribedUsers = {}
 
 bot.onText(/\/start/, function (msg) {
   var chatId = msg.from.id
   var username = msg.from.username
+  users[chatId] = username
   if (!white_list.includes(username)) {
     bot.sendMessage(chatId, 'Ты кто такой?! я тебя не звал, пошел нахерово отсюда')
     return
@@ -28,7 +30,7 @@ bot.onText(/\/start/, function (msg) {
     'После вас ждет второй тур данного квеста, желаю удачи\\! \n' +
     'Познавательной вам игры\\!',
     {parse_mode: 'MarkdownV2'}).then(() => {
-    users[chatId] = msg.from.username
+    subscribedUsers[chatId] = username
   })
 })
 
@@ -43,7 +45,7 @@ var polls = require('./polls.js')
 polls.forEach(poll => {
   new CronJob(poll.sendDate.format('s m H D * *'), () => {
     console.log(users)
-    Object.keys(users).forEach((chatId) => {
+    Object.keys(subscribedUsers).forEach((chatId) => {
       bot.sendPoll(chatId, poll.question, poll.options, {
         is_anonymous: false,
         type: 'quiz',
