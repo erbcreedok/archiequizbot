@@ -7,6 +7,9 @@ var bot = new TelegramBot(token, { polling: true });
 var cron = require('cron')
 var CronJob = cron.CronJob
 
+var express = require('express');
+var app = express();
+
 var users = {}
 var white_list = ['archiebatman', 'yerbols', 'whereisaiman']
 
@@ -51,3 +54,9 @@ polls.forEach(poll => {
     })
   }, null, true, 'Asia/Almaty')
 })
+
+app.get('/', (req, res) => {
+  res.send(JSON.stringify(users))
+})
+
+app.listen(80)
