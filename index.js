@@ -61,4 +61,4 @@ app.get('/', (req, res) => {
   res.send(JSON.stringify(users))
 })
 
-app.listen(80)
+app.listen(process.env.PORT || 3000)
