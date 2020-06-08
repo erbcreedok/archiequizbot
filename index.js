@@ -101,5 +101,5 @@ app.get('/', async (req, res) => {
 app.listen(process.env.PORT || 3000)
 
 setInterval(() => {
-  console.log('healt monitor is alive', moment().format('HH:mm DD.MM.YYYY'))
+  console.log('health monitor is alive', moment().format('HH:mm DD.MM.YYYY'))
 }, 1000 * 60 * 5)
