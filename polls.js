@@ -1,7 +1,7 @@
 const moment = require('moment')
 const polls = [
   {
-    sendDate: moment('20:55 08.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('21:20 08.06.2020','HH:mm DD.MM.YYYY'),
     question: 'В какое заведения я тебя пригласил на первую встречу',
     options: [
       'Del Papa',
@@ -12,7 +12,7 @@ const polls = [
     answer: 3
   },
   {
-    sendDate: moment('20:56 08.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('21:21 08.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Как назывался фильм, на который я тебя впервые пригласил?',
     options: [
       'Лед 2',
@@ -23,7 +23,7 @@ const polls = [
     answer: 1
   },
   {
-    sendDate: moment('20:37 08.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('21:22 08.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Какая песня ассоциировалась у меня во время нашего знакомства?',
     options: [
       'Billie Eilish - Bellyache',
@@ -34,7 +34,7 @@ const polls = [
     answer: 1
   },
   {
-    sendDate: moment('20:38 08.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('21:23 08.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Какую книгу подарил мне твой Отец при знакомстве?',
     options: [
       'От нуля к единице',
@@ -45,7 +45,7 @@ const polls = [
     answer: 2
   },
   {
-    sendDate: moment('20:39 08.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('21:24 08.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Как называется футбольная команда, за которую я болею?',
     options: [
       'Манчестер Юнайтед',
