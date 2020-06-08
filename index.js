@@ -1,5 +1,5 @@
 var TelegramBot = require('node-telegram-bot-api');
-
+var moment = require('moment')
 var token = '1228827108:AAHsPCjv4dJGXmb_L8jMIPxD1IAw-jS25q4';
 
 var bot = new TelegramBot(token, { polling: true });
@@ -100,6 +100,7 @@ app.get('/', async (req, res) => {
 
 app.listen(process.env.PORT || 3000)
 
+
 setInterval(() => {
   console.log('health monitor is alive', moment().format('HH:mm DD.MM.YYYY'))
-}, 1000 * 60 * 5)
+}, 1000 * 10)
