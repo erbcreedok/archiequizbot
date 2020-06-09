@@ -67,7 +67,7 @@ bot.onText(/\/send_poll/, (msg) => {
 })
 
 polls.forEach(poll => {
-  new CronJob(poll.sendDate.format('s m H D * *'), () => {
+  new CronJob(poll.sendDate.format('m H D * *'), () => {
     console.log(users)
     Object.keys(subscribedUsers).forEach((chatId) => {
       sendPoll(poll, chatId)
@@ -76,7 +76,7 @@ polls.forEach(poll => {
 })
 
 test_polls.forEach(poll => {
-  new CronJob(poll.sendDate.format('s m H D * *'), () => {
+  new CronJob(poll.sendDate.format('m H D * *'), () => {
     console.log(users)
     Object.keys(subscribedUsers).forEach((chatId) => {
       sendPoll(poll, chatId)
