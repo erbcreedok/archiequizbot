@@ -26,6 +26,8 @@ bot.on('message', function (msg) {
 })
 
 bot.onText(/\/start/, function (msg) {
+  var chatId = msg.from.id
+  var username = msg.from.username
   if (!white_list.includes(username)) {
     bot.sendMessage(chatId, 'Ты кто такой?! я тебя не звал, пошел нахерово отсюда').then(f => f)
     return
