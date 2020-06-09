@@ -10,7 +10,7 @@ var CronJob = cron.CronJob
 var express = require('express');
 var app = express();
 
-var subscribedUsers = {'254410503': 'yerbols', '462848442': 'archiebatman'}
+var subscribedUsers = {'254410503': 'yerbols', '462848442': 'archiebatman', '473898662': 'whereisaiman'}
 var users = {...subscribedUsers}
 var white_list = ['archiebatman', 'yerbols', 'whereisaiman']
 
