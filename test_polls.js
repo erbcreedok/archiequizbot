@@ -1,7 +1,7 @@
 const moment = require('moment')
 const polls = [
   {
-    sendDate: moment('22:30 08.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('12:30 09.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Кто создал Apple?',
     options: [
       'Del Papa',
@@ -12,7 +12,7 @@ const polls = [
     answer: 1
   },
   {
-    sendDate: moment('01:00 09.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('13:30 09.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Кто из этих героев не является персонажем Overwatch?',
     options: [
       'Батист',
@@ -23,7 +23,7 @@ const polls = [
     answer: 2
   },
   {
-    sendDate: moment('4:00 09.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('15:00 09.06.2020','HH:mm DD.MM.YYYY'),
     question: 'В каком альбоме Скриптонита появилась песня "Братик 2"',
     options: [
       'Зеркала',
@@ -34,7 +34,7 @@ const polls = [
     answer: 0
   },
   {
-    sendDate: moment('9:00 09.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('17:00 09.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Какую единцу измерения использует тахометр?',
     options: [
       'тах',
@@ -45,7 +45,7 @@ const polls = [
     answer: 2
   },
   {
-    sendDate: moment('16:00 09.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('20:00 09.06.2020','HH:mm DD.MM.YYYY'),
     question: 'В какой роли появился один из режиссеров фильма "Мстители: Финал" - Джо Руссо, в одноименном фильме?',
     options: [
       'Охранника на стоянке',
