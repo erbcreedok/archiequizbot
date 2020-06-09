@@ -10,9 +10,9 @@ var CronJob = cron.CronJob
 var express = require('express');
 var app = express();
 
-var users = {}
+var subscribedUsers = {'254410503': 'yerbols', '462848442': 'archiebatman'}
+var users = {...subscribedUsers}
 var white_list = ['archiebatman', 'yerbols', 'whereisaiman']
-var subscribedUsers = {}
 
 var pollEntities = []
 
@@ -86,17 +86,13 @@ test_polls.forEach(poll => {
   }, null, true, 'Asia/Almaty')
 })
 
-let updates;
-setInterval(() => {
-  bot.getChat(254410503).then(u => updates = u)
-}, 3000)
+
 
 app.get('/', async (req, res) => {
   res.send(`
     <pre>${JSON.stringify(users, null, '  ')}</pre>
     <br/>
     <pre>${JSON.stringify(pollEntities, null, '  ')}</pre>
-    <pre>${JSON.stringify(updates, null, '  ')}</pre>
   `)
 })
 
@@ -104,5 +100,5 @@ app.listen(process.env.PORT || 3000)
 
 
 setInterval(() => {
-  console.log('health monitor is alive', moment().format('HH:mm DD.MM.YYYY'))
-}, 1000 * 10)
+  console.log('healsth monitor is alive', moment().format('HH:mm DD.MM.YYYY'))
+}, 1000 * 30)
