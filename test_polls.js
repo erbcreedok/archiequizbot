@@ -1,7 +1,7 @@
 const moment = require('moment')
 const polls = [
   {
-    sendDate: moment('13:00 09.06.2020','HH:mm DD.MM.YYYY'),
+    sendDate: moment('13:02 09.06.2020','HH:mm DD.MM.YYYY'),
     question: 'Кто создал Apple?',
     options: [
       'Del Papa',
