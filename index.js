@@ -105,7 +105,7 @@ function sendImage(chatId, data) {
 
 
 bot.on('photo', (msg) => {
-  const sendToEveryone = moment().isAfter(moment('17:00 15.06.2020', 'HH:mm DD.MM.YYYY'))
+  const sendToEveryone = moment().isAfter(moment('20:50 15.06.2020', 'HH:mm DD.MM.YYYY'))
   let sendTo = Object.keys(test_users)
   console.log('sendToEveryone', sendToEveryone)
   if (sendToEveryone) {
