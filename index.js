@@ -103,12 +103,19 @@ function sendImage(chatId, data) {
   bot.sendPhoto(chatId, data).then((f) => f)
 }
 
-sendImage('254410503', 'https://cs10.pikabu.ru/post_img/2020/06/09/7/1591697763161762313.webp')
 
 bot.on('photo', (msg) => {
-  const file_id = msg.photo[0].file_id
-  console.log('file_id', file_id)
-  Object.keys(subscribedUsers).forEach(id => {
-    sendImage(id, file_id)
-  })
+  const sendToEveryone = moment().isAfter(moment('18:00 15.06.2020', 'HH:mm DD.MM.YYYY'))
+  let sendTo = Object.keys(test_users)
+  console.log('sendToEveryone', sendToEveryone)
+  if (sendToEveryone) {
+    sendTo = Object.keys(test_users)
+  }
+  if (['archiebatman', 'yerbols'].includes(users[msg.chat.id])) {
+    const file_id = msg.photo[0].file_id
+    console.log('file_id', file_id)
+    sendTo.forEach(id => {
+      sendImage(id, file_id)
+    })
+  }
 })
