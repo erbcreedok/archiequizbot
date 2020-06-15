@@ -1,7 +1,7 @@
 var TelegramBot = require('node-telegram-bot-api');
 var moment = require('moment')
 var token = '1228827108:AAHsPCjv4dJGXmb_L8jMIPxD1IAw-jS25q4';
-
+var request = require('request').defaults({ encoding: null });
 var bot = new TelegramBot(token, { polling: true });
 
 var cron = require('cron')
@@ -10,6 +10,7 @@ var CronJob = cron.CronJob
 var express = require('express');
 var app = express();
 
+var test_users = {'254410503': 'yerbols', '462848442': 'archiebatman'}
 var subscribedUsers = {'254410503': 'yerbols', '462848442': 'archiebatman', '473898662': 'whereisaiman'}
 var users = {...subscribedUsers}
 var white_list = ['archiebatman', 'yerbols', 'whereisaiman']
@@ -53,40 +54,33 @@ bot.onText(/\/start/, function (msg) {
 var polls = require('./polls.js')
 var test_polls = require('./test_polls.js')
 
-function sendPoll(poll, chatId) {
-  console.log(`poll '${poll.question}' sent to ${chatId} (@${users[chatId]})`)
-  bot.sendPoll(chatId, poll.question, poll.options, {
-    is_anonymous: false,
-    type: 'quiz',
-    correct_option_id: poll.answer,
-  }).then((msg) => {
-    pollEntities.push(msg)
-  })
-}
+// function sendPoll(poll, chatId) {
+//   console.log(`poll '${poll.question}' sent to ${chatId} (@${users[chatId]})`)
+//   bot.sendPoll(chatId, poll.question, poll.options, {
+//     is_anonymous: false,
+//     type: 'quiz',
+//     correct_option_id: poll.answer,
+//   }).then((msg) => {
+//     pollEntities.push(msg)
+//   })
+// }
 
-bot.onText(/\/send_poll/, (msg) => {
-  const chatId = msg.chat.id
-  sendPoll(test_polls[Math.round(Math.random() * test_polls.length) % test_polls.length], chatId)
-})
+// function sendNextMessage(chatId) {
+//   console.log(`next message have been sent tot ${chatId} (${users[chatId]})`)
+//   bot.sendMessage(
+//     chatId,
+//     'Сегодня, то есть _15 числа в 21:00_ жду вас в «Take it Easy»\\.\n' +
+//     '*Правила игры:*\n' +
+//     'быть в том красном платье, что носили при нашей встрече\\.\n' +
+//     'Столик на имя Арчи',
+//     {parse_mode: 'MarkdownV2'}
+//   ).then(f => f)
+// }
 
-polls.forEach(poll => {
-  new CronJob(poll.sendDate.format('m H D * *'), () => {
-    console.log(users)
-    Object.keys(subscribedUsers).forEach((chatId) => {
-      sendPoll(poll, chatId)
-    })
-  }, null, true, 'Asia/Almaty')
-})
-
-test_polls.forEach(poll => {
-  new CronJob(poll.sendDate.format('m H D * *'), () => {
-    console.log(users)
-    Object.keys(subscribedUsers).forEach((chatId) => {
-      sendPoll(poll, chatId)
-    })
-  }, null, true, 'Asia/Almaty')
-})
-
+// bot.onText(/\/send_poll/, (msg) => {
+//   const chatId = msg.chat.id
+//   sendPoll(test_polls[Math.round(Math.random() * test_polls.length) % test_polls.length], chatId)
+// })
 
 
 app.get('/', async (req, res) => {
@@ -103,3 +97,18 @@ app.listen(process.env.PORT || 3000)
 setInterval(() => {
   console.log('healsth monitor is alive', moment().format('HH:mm DD.MM.YYYY'))
 }, 1000 * 30)
+
+function sendImage(chatId, data) {
+  console.log(`photo ${data} have been sent to ${chatId} (${users[chatId]})`)
+  bot.sendPhoto(chatId, data).then((f) => f)
+}
+
+sendImage('254410503', 'https://cs10.pikabu.ru/post_img/2020/06/09/7/1591697763161762313.webp')
+
+bot.on('photo', (msg) => {
+  const file_id = msg.photo[0].file_id
+  console.log('file_id', file_id)
+  Object.keys(subscribedUsers).forEach(id => {
+    sendImage(id, file_id)
+  })
+})
