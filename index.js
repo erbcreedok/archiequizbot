@@ -105,11 +105,12 @@ function sendImage(chatId, data) {
 
 
 bot.on('photo', (msg) => {
-  const sendToEveryone = moment().isAfter(moment('17:05 15.06.2020', 'HH:mm DD.MM.YYYY'))
-  let sendTo = Object.keys({})
-  console.log('sendToEveryone', sendToEveryone)
+  const sendToEveryone = moment().isAfter(moment('21:15 15.06.2020', 'HH:mm DD.MM.YYYY'))
+  let sendTo = Object.keys(test_users)
   if (sendToEveryone) {
-    sendTo = Object.keys(test_users)
+    sendTo = Object.keys(subscribedUsers)
+  } else {
+    console.log('message send to test users', sendTo)
   }
   if (['archiebatman', 'yerbols'].includes(users[msg.chat.id])) {
     const file_id = msg.photo[0].file_id
